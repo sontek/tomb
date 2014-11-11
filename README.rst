@@ -5,7 +5,7 @@ As an intro to tombo we'll create a simple blog application:
 
 .. code-block:: python
 
-    tomb --new blog
+    tomb new blog
 
 This will generate a new folder `blog` with the following folders in it:
 
