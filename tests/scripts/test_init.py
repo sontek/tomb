@@ -37,8 +37,13 @@ def test_tomb_clean_tmp():
         with open('hello.pyo', 'w') as f3:
             f3.write('Hello World!')
 
-        assert len(os.listdir('.')) == 3
+        os.makedirs('__pycache__')
 
+        with open('__pycache__/hello.txt', 'w') as f4:
+            f4.write('Hello World!')
+
+        assert len(os.listdir('.')) == 4
         result = runner.invoke(tomb, ['clean_tmp'])
+
         assert result.exit_code == 0
         assert len(os.listdir('.')) == 0

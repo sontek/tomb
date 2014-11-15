@@ -1,5 +1,5 @@
 import click
-import subprocess
+from invoke import run
 
 
 @click.group()
@@ -27,12 +27,14 @@ def clean_tmp(path):
     """
     Deletes any .pyc, .pyo, or files ending with ~
     """
-    patterns = ('*.pyc', '*.pyo', '*~')
-    processes = []
+    patterns = (
+        '*.pyc',
+        '*.pyo',
+        '*~',
+        '__pycache__',
+    )
 
     for pattern in patterns:
-        tmpl = 'find %s -name %s -exec rm -f {} +'
+        tmpl = 'find %s -name %s -exec rm -rf {} +'
         cmd = tmpl % (path, pattern)
-        processes.append(subprocess.Popen(cmd.split()))
-
-    [p.wait() for p in processes]
+        run(cmd)
