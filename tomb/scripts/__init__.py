@@ -28,7 +28,11 @@ def clean_tmp(path):
     Deletes any .pyc, .pyo, or files ending with ~
     """
     patterns = ('*.pyc', '*.pyo', '*~')
+    processes = []
+
     for pattern in patterns:
         tmpl = 'find %s -name %s -exec rm -f {} +'
         cmd = tmpl % (path, pattern)
-        subprocess.Popen(cmd.split())
+        processes.append(subprocess.Popen(cmd.split()))
+
+    [p.wait() for p in processes]
