@@ -2,3 +2,7 @@
 *.egg-info
 *.pyc
 *~
+.coverage
+.tox/
+coverage.xml
+junit.xml
