@@ -28,7 +28,7 @@ Templating defaults are setup to use:
 
 Getting Started
 =================================
-As an intro to tombo we'll create a simple blog application:
+As an intro to tomb we'll create a simple blog application:
 
 
 .. code-block:: python
