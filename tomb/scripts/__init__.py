@@ -1,5 +1,8 @@
 import click
+import os
+
 from invoke import run
+from tomb.scaffolds.base import BaseTombTemplate
 
 
 @click.group()
@@ -11,14 +14,38 @@ def tomb(ctx):
     pass
 
 
+class DummyOptions(object):
+    simulate = None
+    interactive = True
+    overwrite = False
+
+
+class DummyCommand(object):
+    options = DummyOptions()
+    verbosity = None
+
+
 @tomb.command()
 @click.argument('project_name')
-def new(project_name):
+@click.option(
+    '--output-dir',
+    default='.',
+    help='Location for the project to be created'
+)
+def new(project_name, output_dir):
     """
     Generates a new project from the default template
     """
-    for x in range(3):
-        click.echo('Hello %s!' % project_name)
+    scaffold = BaseTombTemplate('BaseTombTemplate')
+
+    if output_dir == '.':
+        output_dir = os.getcwd()
+
+    vars = {
+        'package': project_name,
+    }
+
+    scaffold.run(DummyCommand(), output_dir, vars)
 
 
 @tomb.command()

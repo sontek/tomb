@@ -1,0 +1,7 @@
+alembic
+mako
+pyramid>=1.5
+pyyaml
+rest_toolkit
+sqlalchemy
+tomb

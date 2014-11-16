@@ -1,0 +1,37 @@
+[metadata]
+name = {{ package }}
+author =
+author_email =
+summary =
+description-file = README.rst
+home-page =
+
+[files]
+packages =
+    {{ package }}
+
+[entry_points]
+console_scripts =
+
+
+[pbr]
+warnerrors = True
+
+[pytest]
+norecursedirs =
+    .git
+    .tox
+    dist
+    build
+    *.egg
+
+addopts =
+    -rxEfs
+    --strict
+    --doctest-modules
+    --doctest-glob \*.rst
+    --tb short
+    --ignore setup.py
+
+markers =
+    unit

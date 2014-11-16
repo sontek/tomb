@@ -1,14 +1,17 @@
 import pytest
 from click.testing import CliRunner
-
+import logging
+logging.basicConfig()
+logger = logging.getLogger(__name__)
 
 @pytest.mark.unit
 def test_tomb_new_correct():
     from tomb.scripts import tomb
 
     runner = CliRunner()
-    result = runner.invoke(tomb, ['new', 'test_package'])
-    assert result.exit_code == 0
+    with runner.isolated_filesystem():
+        result = runner.invoke(tomb, ['new', 'test_package'])
+        assert result.exit_code == 0
 
 
 @pytest.mark.unit

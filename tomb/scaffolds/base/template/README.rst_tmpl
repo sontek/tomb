@@ -1,0 +1,16 @@
+===============================
+{{ package }} README
+===============================
+
+Getting Started
+---------------
+
+- cd <directory containing this file>
+- source dev_vars.sh
+- $VENV/bin/pip install -e .
+- $VENV/bin/pserve app.ini
+
+Features
+--------
+
+* TODO
