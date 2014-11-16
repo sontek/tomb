@@ -5,15 +5,13 @@ with the Pyramid web framework.
 
 Batteries Included
 ----------------------------------
-- tomb_auth for configurable user authentication
-- tomb_assets for asset pipeline
-- tomb_cache for caching
+- User Authentication
+- Asset Pipeline
+- Caching
 - Pre-made templates for error pages
-- Mako for templating
-- Alembic for schema migrations
+- Schema migrations
 - Procfile for deploying to a PaaS (e.g Heroku)
 - pytest for testing
-- rest_toolkit
 - YAML Configuration
 
 Style (Front-end batteries!)
@@ -22,8 +20,7 @@ Templating defaults are setup to use:
 
 - http://jquery.com/
 - http://modernizr.com/
-- http://foundation.zurb.com/
-- http://typeplate.com/
+- http://getbootstrap.com/
 - http://fontawesome.io/
 
 Getting Started
