@@ -1,8 +1,11 @@
 import pytest
-from click.testing import CliRunner
 import logging
+import os
+
+from click.testing import CliRunner
 logging.basicConfig()
 logger = logging.getLogger(__name__)
+
 
 @pytest.mark.unit
 def test_tomb_new_correct():
@@ -11,7 +14,11 @@ def test_tomb_new_correct():
     runner = CliRunner()
     with runner.isolated_filesystem():
         result = runner.invoke(tomb, ['new', 'test_package'])
+        files = os.listdir('.')
+
         assert result.exit_code == 0
+        assert 'test_package' in files
+        assert 'tox.ini' in files
 
 
 @pytest.mark.unit
@@ -26,7 +33,6 @@ def test_tomb_new_missing_package():
 @pytest.mark.unit
 def test_tomb_clean_tmp():
     from tomb.scripts import tomb
-    import os
 
     runner = CliRunner()
 

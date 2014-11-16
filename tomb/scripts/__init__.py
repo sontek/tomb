@@ -22,7 +22,7 @@ class DummyOptions(object):
 
 class DummyCommand(object):
     options = DummyOptions()
-    verbosity = None
+    verbosity = 0
 
 
 @tomb.command()
